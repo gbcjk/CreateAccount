@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <h1>Online Store</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#cart">Cart</a></li>
+                    <li><a href="#admin">Account</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Homepage Section -->
+    <section id="home" class="highlight">
+        <div class="container">
+            <h2>Featured Products & Promotions</h2>
+            <div class="featured">
+                <div class="product" onclick="showProductDetails('Product 1', 'Description of Product 1', '$10.00')">
+                    <img src="featured1.jpg" alt="Featured Product 1">
+                    <p>Featured Product 1</p>
+                </div>
+                <div class="product" onclick="showProductDetails('Product 2', 'Description of Product 2', '$20.00')">
+                    <img src="featured2.jpg" alt="Featured Product 2">
+                    <p>Featured Product 2</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Listings Section -->
+    <section id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <input type="text" id="search-bar" placeholder="Search products...">
+            <div class="filters">
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="all">All</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="clothing">Clothing</option>
+                </select>
+            </div>
+            <div class="product-list">
+                <div class="product" data-category="electronics">
+                    <img src="product1.jpg" alt="Product 1">
+                    <p>Product 1</p>
+                    <p>$10.00</p>
+                </div>
+                <div class="product" data-category="clothing">
+                    <img src="product2.jpg" alt="Product 2">
+                    <p>Product 2</p>
+                    <p>$20.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Details Section -->
+    <section id="product-details" class="hidden">
+        <div class="container">
+            <h2>Product Details</h2>
+            <div class="details">
+                <img src="product-detail.jpg" alt="Product Detail">
+                <div class="info">
+                    <h3 id="product-name">Product Name</h3>
+                    <p id="product-description">Description of the product.</p>
+                    <p id="product-price">Price: $XX.XX</p>
+                    <button onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Section -->
+    <section id="cart">
+        <div class="container">
+            <h2>Your Cart</h2>
+            <div class="cart-items">
+                <p>No items in cart.</p>
+            </div>
+            <button id="checkout-button">Proceed to Checkout</button>
+        </div>
+    </section> <!-- Admin Panel Section -->
+    <section id="admin">
+        <div class="container">
+            <h2>Admin Panel</h2>
+            <h1>Welcome to the Flask App</h1>
+            <a href="/register">Register</a> | <a href="/login">Login</a>
+            <div class="admin-tools">
+                <button id="manage-products">Manage Products</button>
+                <button id="view-orders">View Orders</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="hidden">
+        <div class="container">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="address">Address:</label>
+                <textarea id="address" required></textarea>
+
+                <label for="payment">Payment Method:</label>
+                <select id="payment">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+
+                <button type="submit">Complete Purchase</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Online Store. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
